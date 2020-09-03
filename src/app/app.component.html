@@ -1,0 +1,20 @@
+<div class="parentContainer">
+    <div class="HeaderContainer headerBoxShadow">
+        <nav class="navbar navbar-expand navbar-dark bg-dark backgroundWhite" *ngIf="currentUser">
+            <div class="navbar-nav displayBlock width100 backgroundWhite">
+                <a class="nav-item nav-link displayInlineBlock colorBlack" routerLinkActive="active" routerLink="/"
+                    *ngIf="!isAdmin">Home</a>
+                <!-- <a class="nav-item nav-link" routerLinkActive="active" routerLink="/dashboard" *ngIf="isAdmin">Dashboard</a> -->
+                <a class="nav-item nav-link displayInlineBlock colorBlack" routerLinkActive="active" routerLink="/admin"
+                    *ngIf="isAdmin">Users</a>
+                <!-- <a class="nav-item nav-link" routerLink="/settings">Settings</a> -->
+                <a class="nav-item nav-link displayInlineBlock floatRight colorBlack" (click)="logout()">Logout</a>
+            </div>
+        </nav>
+    </div>
+    <div class="bodyContainer">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="foorterContainer"></div>
+</div>
+<app-toaster-container></app-toaster-container>

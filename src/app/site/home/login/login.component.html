@@ -1,0 +1,21 @@
+<div class="loginContainer">
+  <form [formGroup]="userForm" (submit)="logIn()">
+    <div class="loginCard">
+      <label for="username">Username</label><br>
+      <input formControlName="username" id="username" /><br>
+      <control-messages [control]="userForm.get('username')"></control-messages><br>
+
+      <label for="password">Password</label><br>
+      <input formControlName="password" id="password" /><br>
+      <control-messages [control]="userForm.get('password')"></control-messages><br>
+      <div class="control-messages" *ngIf="loginErrors">
+        <p> {{loginErrors}} </p>
+      </div>
+      <button type="submit" [disabled]="!userForm.valid">Login</button>
+      <!-- <a href="javascript:(0)"> Forget Password</a> -->
+      <a class="buttonPadding" href="javascript:(0)" routerLink="/signup"> <button>Sign-up</button></a>
+      <a class="buttonPadding" href="javascript:(0)" routerLink="/forget-password"> <button>Forgot Password</button></a>
+    </div>
+  </form>
+
+</div>

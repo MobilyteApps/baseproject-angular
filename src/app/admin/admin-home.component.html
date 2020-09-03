@@ -1,0 +1,54 @@
+<div style="display:block ;" class="adminContainer">
+    <div class="tableContainer">
+        <button (click)="addUser()" class="marginBottom10px backgroundWhite addUserButton">
+            add User
+        </button>
+        <table class="margin0px backgroundWhite adminTableContainer">
+            <thead class="backgroundWhite adminTableHeader">
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Verified</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                    <th>Reset</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr
+                    *ngFor="let user of users | paginate: { id:'userList',itemsPerPage: itemsPerPage, currentPage: currentPage,totalItems:totalItems };let i = index ">
+
+                <tr *ngFor="let user of users;let i = index ">
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.isVerified}}</td>
+                    <td><a href="javascript:void(0)" (click)="changeStatus(i,user)"
+                            [ngClass]="getActiveStatus(user)">{{user && user.isActive?'ACTIVE':'INACTIVE'}}</a></td>
+                    <td><a href="javascript:void(0)" (click)="updateUser(i,user)">Edit</a></td>
+                    <td><a href="javascript:void(0)" (click)="deleteUser(i,user)">Delete</a></td>
+                    <td><a href="javascript:void(0)" (click)="forgetPassword(i,user)">Verify</a></td>
+
+                </tr>
+                <tr></tr>
+                <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td (click)="addUser()"><button>add User</button></td>
+            </tr> -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- <div style="display:block ;"> -->
+<!-- <pagination-controls  class="my-pagination" id="userList"
+                      (pageChange)="pageChanged($event)"
+                      (pageBoundsCorrection)="pageChanged($event,'ppppp')"
+                      autoHide="false"
+                      directionLinks="true"
+                    >
+</pagination-controls> -->
+<!-- </div> -->

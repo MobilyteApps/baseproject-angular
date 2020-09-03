@@ -1,0 +1,29 @@
+<div class="loginContainer">
+
+  <form [formGroup]="userForm" (submit)="saveUser()" autocomplete="off">
+    
+    <div class="loginCard">
+      <label for="username">User Name</label><br>
+      <input formControlName="username" id="username" /><br>
+      <control-messages [control]="userForm.get('username')"></control-messages><br>
+
+      <label for="email">Email</label><br>
+      <input formControlName="email" id="email" /><br>
+      <control-messages [control]="userForm.get('email')"></control-messages><br>
+
+      <label for="password">Password</label><br>
+      <input formControlName="password" id="password" /><br>
+      <control-messages [control]="userForm.get('password')"></control-messages><br>
+
+      <label for="confirm_password">Confirm Password</label><br>
+      <input formControlName="confirm_password" id="confirm_password" /><br>
+      <div class="control-messages-error"
+        *ngIf="userForm.errors?.passwordNotMatch && (userForm.get('confirm_password').touched || userForm.get('confirm_password').dirty)">
+        Password not matching</div>
+      <control-messages [control]="userForm.get('confirm_password')"></control-messages><br>
+
+      <button type="submit" [disabled]="!userForm.valid">Register</button>
+      <a class="buttonPadding" href="javascript:(0)" routerLink="/login"> <button>Login</button></a>
+    </div>
+  </form>
+</div>
